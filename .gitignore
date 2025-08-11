@@ -72,3 +72,13 @@ atlassian*
 /generated/*
 !/generated/.htaccess
 .DS_Store
+# Ignore var directory except .htaccess
+/var/*
+!/var/.htaccess
+
+# Ignore var directory except .htaccess
+/var/*
+
+# Ignore var directory except .htaccess
+/var/*
+!/var/.htaccess

@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Always redirect versioned URLs to non-versioned ones
+    RewriteRule ^version[^/]+/(.*)$ /$1 [L,R=301]
+
+    # If the requested file doesn't exist, forward to static.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule .* ../static.php [L]
+</IfModule>
