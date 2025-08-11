@@ -1,0 +1,1 @@
+[21-May-2025 14:22:35 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 11060936 bytes) in /home/wraptitemanufact/public_html/vendor/magento/framework/Encryption/Adapter/SodiumChachaIetf.php on line 41

@@ -1,0 +1,62 @@
+<div class="contact-container">
+                                <h6 class="content-title contact-title">This tool helps you determine the Net weight of the roll of stretch film!</h6>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- contact form -->
+                                        <div class="waituk_contact-form">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="WIDTH">WIDTH <span style="color:red">*</span></label>
+                                                        <input type="number" id="var1" placeholder="Width (inches)" name="" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="LENGTH">LENGTH <span style="color:red">*</span></label>
+                                                        <input type="number" name="" placeholder="Length (feet)" id="var2" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="GAUGE">GAUGE <span style="color:red">*</span></label>
+                                                        <input type="number" name="" id="var3" class="form-control" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="btn-container" style="text-align: center;">
+                                                        <button onclick="calculate()" class="btn btn-primary btn-arrow">CONVERT</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mt-5">
+                                        <div id="result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                        function calculate() {
+                          var var1 = document.getElementById("var1").value;
+                          var var2 = document.getElementById("var2").value;
+                          var var3 = document.getElementById("var3").value;
+                          if(var1!='' && var2!='' && var3!='') {
+                            function formatResult(result) {
+                                return result.toFixed(2);
+                              }
+                              // Solve the equation here
+                              var result =  (var1 * var2 * var3) * 0.000004;
+                              var result = formatResult(result);
+                              //alert(result);
+
+                              document.getElementById("result").innerHTML = "<h6 class='content-title contact-title'>Net Weight Of The Roll is <span style='color: #007fff'>"+result+" lbs</span></h6>";
+                          } else {
+                            alert('Please enter correct dimensions.');
+                          }
+                        }
+                      </script>

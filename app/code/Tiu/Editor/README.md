@@ -1,0 +1,1 @@
+This module makes it possible to upload different filetypes inside the WYSIWYG-editor.

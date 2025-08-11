@@ -1,0 +1,302 @@
+<div class="contact-container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6 class="content-title contact-title">Length Converter</h6>
+                                        <div action="#" method="post" id="contact_form" class="waituk_contact-form">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <select style="height: 50px;" id="var1" name="con_fname" class="form-control">
+                                                            <option>FROM *</option>
+                                                            <option value="Yard">Yard</option>
+                                                            <option value="Metre">Metre</option>
+                                                            <option value="Millimetre">Millimetre</option>
+                                                            <option value="Centimetre">Centimetre</option>
+                                                            <option value="Inch">Inch</option>
+                                                            <option value="Foot">Foot</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <select style="height: 50px;" id="var2" name="con_fname" class="form-control">
+                                                            <option>TO *</option>
+                                                            <option value="Yard">Yard</option>
+                                                            <option value="Metre">Metre</option>
+                                                            <option value="Millimetre">Millimetre</option>
+                                                            <option value="Centimetre">Centimetre</option>
+                                                            <option value="Inch">Inch</option>
+                                                            <option value="Foot">Foot</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <input type="tel" placeholder="VALUE *" id="var3" name="con_phone" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="btn-container">
+                                                        <button onclick="calculate()" class="btn btn-primary btn-arrow">CONVERT</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mt-5">
+                                        <div id="result"></div>
+                                    </div>
+                                </div>
+                                <!-- Other -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6 class="content-title contact-title">Weight Converter</h6>
+                                        <div action="#" method="post" id="contact_form" class="waituk_contact-form">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <select style="height: 50px;" id="var4" name="con_fname" class="form-control">
+                                                            <option>FROM *</option>
+                                                            <option value="Ton">Ton</option>
+                                                            <option value="Ounce">Ounce</option>
+                                                            <option value="Pound">Pound</option>
+                                                            <option value="Miligram">Miligram</option>
+                                                            <option value="Kilogram">Kilogram</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <select style="height: 50px;" id="var5" name="con_fname" class="form-control">
+                                                            <option>TO *</option>
+                                                            <option value="Ton">Ton</option>
+                                                            <option value="Ounce">Ounce</option>
+                                                            <option value="Pound">Pound</option>
+                                                            <option value="Miligram">Miligram</option>
+                                                            <option value="Kilogram">Kilogram</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <input type="tel" placeholder="VALUE *" id="var6" name="con_phone" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="btn-container">
+                                                        <button onclick="calculateweight()" class="btn btn-primary btn-arrow">CONVERT</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mt-5">
+                                        <div id="resultweight"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                        function calculate() {
+                          var var1 = document.getElementById("var1").value;
+                          var var2 = document.getElementById("var2").value;
+                          var var3 = document.getElementById("var3").value;
+                          if(var1!='' && var2!='' && var3!='') {  
+                            function formatResult(result) {
+                                return result.toFixed(2);
+                            }
+                            /* Yard */
+                            if(var1 == 'Yard' && var2 == 'Metre') {
+                              var result =  var3 * 1.093613;
+                              var result = formatResult(result)+' m';
+                            } else if(var1 == 'Yard' && var2 == 'Millimetre') {
+                              var result =  var3 * 1000;
+                              var result = formatResult(result)+' mm';
+                            } else if(var1 == 'Yard' && var2 == 'Centimetre') {
+                              var result =  var3 * 100;
+                              var result = formatResult(result)+' cm';
+                            } else if(var1 == 'Yard' && var2 == 'Inch') {
+                              var result =  var3 * 39.370079;
+                              var result = formatResult(result)+' in';
+                            } else if(var1 == 'Yard' && var2 == 'Foot') {
+                              var result =  var3 * 3.28084;
+                              var result = formatResult(result)+' ft';
+                            /* Metre */
+                            } else if(var1 == 'Metre' && var2 == 'Yard') {
+                              var result =  var3 * 1.093613;
+                              var result = formatResult(result)+' yd';
+                            } else if(var1 == 'Metre' && var2 == 'Millimetre') {
+                              var result =  var3 * 1000;
+                              var result = formatResult(result)+' mm';
+                            } else if(var1 == 'Metre' && var2 == 'Centimetre') {
+                              var result =  var3 * 100;
+                              var result = formatResult(result)+' cm';
+                            } else if(var1 == 'Metre' && var2 == 'Inch') {
+                              var result =  var3 * 39.370079;
+                              var result = formatResult(result)+' in';
+                            } else if(var1 == 'Metre' && var2 == 'Foot') {
+                              var result =  var3 * 3.28084;
+                              var result = formatResult(result)+' ft';
+                            }
+                            /* Millimetre */
+                            else if(var1 == 'Millimetre' && var2 == 'Yard') {
+                              var result =  var3 * 0.001094;
+                              var result = formatResult(result)+' yd';
+                            } else if(var1 == 'Millimetre' && var2 == 'Metre') {
+                              var result =  var3 * 0.001;
+                              var result = formatResult(result)+' m';
+                            } else if(var1 == 'Millimetre' && var2 == 'Centimetre') {
+                              var result =  var3 * 0.1;
+                              var result = formatResult(result)+' cm';
+                            } else if(var1 == 'Millimetre' && var2 == 'Inch') {
+                              var result =  var3 * 0.03937;
+                              var result = formatResult(result)+' in';
+                            } else if(var1 == 'Millimetre' && var2 == 'Foot') {
+                              var result =  var3 * 0.003281;
+                              var result = formatResult(result)+' ft';
+                            }
+                            /* Centimetre */
+                            else if(var1 == 'Centimetre' && var2 == 'Yard') {
+                              var result =  var3 * 0.010936;
+                              var result = formatResult(result)+' yd';
+                            } else if(var1 == 'Centimetre' && var2 == 'Metre') {
+                              var result =  var3 * 0.01;
+                              var result = formatResult(result)+' m';
+                            } else if(var1 == 'Centimetre' && var2 == 'Millimetre') {
+                              var result =  var3 * 10;
+                              var result = formatResult(result)+' mm';
+                            } else if(var1 == 'Centimetre' && var2 == 'Inch') {
+                              var result =  var3 * 0.393701;
+                              var result = formatResult(result)+' in';
+                            } else if(var1 == 'Centimetre' && var2 == 'Foot') {
+                              var result =  var3 * 0.032808;
+                              var result = formatResult(result)+' ft';
+                            }
+                            /* Inch */
+                            else if(var1 == 'Inch' && var2 == 'Yard') {
+                              var result =  var3 * 0.027778;
+                              var result = formatResult(result)+' yd';
+                            } else if(var1 == 'Inch' && var2 == 'Metre') {
+                              var result =  var3 * 0.0254;
+                              var result = formatResult(result)+' m';
+                            } else if(var1 == 'Inch' && var2 == 'Millimetre') {
+                              var result =  var3 * 25.4;
+                              var result = formatResult(result)+' mm';
+                            } else if(var1 == 'Inch' && var2 == 'Centimetre') {
+                              var result =  var3 * 2.54;
+                              var result = formatResult(result)+' cm';
+                            } else if(var1 == 'Inch' && var2 == 'Foot') {
+                              var result =  var3 * 0.083333;
+                              var result = formatResult(result)+' ft';
+                            }
+                            /* Foot */
+                            else if(var1 == 'Foot' && var2 == 'Yard') {
+                              var result =  var3 * 0.333333;
+                              var result = formatResult(result)+' yd';
+                            } else if(var1 == 'Foot' && var2 == 'Metre') {
+                              var result =  var3 * 0.3048;
+                              var result = formatResult(result)+' m';
+                            } else if(var1 == 'Foot' && var2 == 'Millimetre') {
+                              var result =  var3 * 304.8;
+                              var result = formatResult(result)+' mm';
+                            } else if(var1 == 'Foot' && var2 == 'Centimetre') {
+                              var result =  var3 * 30.48;
+                              var result = formatResult(result)+' cm';
+                            } else if(var1 == 'Foot' && var2 == 'Inch') {
+                              var result =  var3 * 12
+                              var result = formatResult(result)+' in';
+                            }
+                            document.getElementById("result").innerHTML = "<h6 class='content-title contact-title'>Length is <span style='color: #007fff'>"+result+" </span></h6>";
+                      } else {
+                            alert('Please enter correct dimensions.');
+                          }
+                        }
+
+                        function calculateweight() {
+                          var var4 = document.getElementById("var4").value;
+                          var var5 = document.getElementById("var5").value;
+                          var var6 = document.getElementById("var6").value;
+                          if(var4!='' && var5!='' && var6!='') {  
+                            function formatResult(resultweight) {
+                                return result.toFixed(2);
+                            }
+                            /* Ton */
+                            if(var4 == 'Ton' && var5 == 'Ounce') {
+                              var result =  var6 * 32000.0261;
+                              var result = formatResult(resultweight)+' oz';
+                            } else if(var4 == 'Ton' && var5 == 'Pound') {
+                              var result =  var6 * 2000.001631;
+                              var result = formatResult(resultweight)+' lb';
+                            } else if(var4 == 'Ton' && var5 == 'Miligram') {
+                              var result =  var6 * 907184740;
+                              var result = formatResult(resultweight)+' mg';
+                            } else if(var4 == 'Ton' && var5 == 'Kilogram') {
+                              var result =  var6 * 907.18474
+                              var result = formatResult(resultweight)+' kg';
+                            /* Ounce */
+                            } else if(var4 == 'Ounce' && var5 == 'Ton') {
+                              var result =  var6 * 0.000031;
+                              var result = formatResult(resultweight)+' t';
+                            } else if(var4 == 'Ounce' && var5 == 'Pound') {
+                              var result =  var6 * 0.0625;
+                              var result = formatResult(resultweight)+' lb';
+                            } else if(var4 == 'Ounce' && var5 == 'Miligram') {
+                              var result =  var6 * 28349.5
+                              var result = formatResult(resultweight)+' mg';
+                            } else if(var4 == 'Ounce' && var5 == 'Kilogram') {
+                              var result =  var6 * 0.028349;
+                              var result = formatResult(resultweight)+' kg';
+                            }
+                            /* Pound */
+                            else if(var4 == 'Pound' && var5 == 'Ton') {
+                              var result =  var6 * 0.0005;
+                              var result = formatResult(resultweight)+' t';
+                            } else if(var4 == 'Pound' && var5 == 'Ounce') {
+                              var result =  var6 * 16;
+                              var result = formatResult(resultweight)+' oz';
+                            } else if(var4 == 'Pound' && var5 == 'Miligram') {
+                              var result =  var6 * 453592.33
+                              var result = formatResult(resultweight)+' mg';
+                            } else if(var4 == 'Pound' && var5 == 'Kilogram') {
+                              var result =  var6 * 0.454
+                              var result = formatResult(resultweight)+' kg';
+                            }
+                            /* Miligram */
+                            else if(var4 == 'Miligram' && var5 == 'Ton') {
+                              var result =  var6 * 0.000000001;
+                              var result = formatResult(resultweight)+' t';
+                            } else if(var4 == 'Miligram' && var5 == 'Ounce') {
+                              var result =  var6 * 0.000035;
+                              var result = formatResult(resultweight)+' oz';
+                            } else if(var4 == 'Miligram' && var5 == 'Pound') {
+                              var result =  var6 * 0.000002;
+                              var result = formatResult(resultweight)+' lb';
+                            } else if(var4 == 'Miligram' && var5 == 'Kilogram') {
+                              var result =  var6 * 0.000001;
+                              var result = formatResult(resultweight)+' kg';
+                            }
+                            /* Kilogram */
+                            else if(var4 == 'Kilogram' && var5 == 'Ton') {
+                              var result =  var6 * 0.001102;
+                              var result = formatResult(resultweight)+' t';
+                            } else if(var4 == 'Kilogram' && var5 == 'Ounce') {
+                              var result =  var6 * 35.273991;
+                              var result = formatResult(resultweight)+' oz';
+                            } else if(var4 == 'Kilogram' && var5 == 'Pound') {
+                              var result =  var6 * 2.204624
+                              var result = formatResult(resultweight)+' lb';
+                            } else if(var4 == 'Kilogram' && var5 == 'Miligram') {
+                              var result =  var6 * 1000000;
+                              var result = formatResult(resultweight)+' mg';
+                            }
+                            document.getElementById("resultweight").innerHTML = "<h6 class='content-title contact-title'>Weight is <span style='color: #007fff'>"+result+" </span></h6>";
+                      } else {
+                            alert('Please enter correct dimensions.');
+                          }
+                        }
+                      </script>

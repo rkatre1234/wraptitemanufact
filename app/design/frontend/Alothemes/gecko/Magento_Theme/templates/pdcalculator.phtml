@@ -1,0 +1,74 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$media = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA)."images/pd.jpg";
+?>
+<div class="contact-container">
+                                <h6 class="content-title contact-title">This tool calculates the diagonal measurement of your pallet, ensuring it fits securely on the wrapper.</h6>
+                                <!--<p>Just enter the length of the material in feet, the thickness of the material in gauge, and the outer diameter of the core in inches.</p>
+                                <p><u>Sample Equation:</u> CHF1880A - Length of Material = 1,500', Thickness of Material = 80ga, OD of the Core = 3.375"<br/>So the outer diameter of the finished roll will be = 5.45"<br><br></p>-->
+                                <div class="row">
+                                    <div class="col-lg-12 mb-5" style="text-align: center;">
+                                        <img style="width:400px" src="<?php echo $media;?>">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- contact form -->
+                                        <div class="waituk_contact-form">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="Length">Length <span style="color:red">*</span></label>
+                                                        <input type="number" name="" id="var1" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="Width">Width <span style="color:red">*</span></label>
+                                                        <input type="number" name="" id="var2" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="btn-container" style="text-align: center;">
+                                                        <button onclick="calculate()" class="btn btn-primary btn-arrow">Calculate</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mt-5">
+                                        <div id="result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                        function calculate() {
+                          var var1 = document.getElementById("var1").value;
+                          var var2 = document.getElementById("var2").value;
+                          if(var1!='' && var2!='') {  
+                            function formatResult(result) {
+                                return result.toFixed(2);
+                            }
+                              // Solve the equation here
+                              var val1 = Math.pow(var1, 2);
+                              //alert(val1);
+                              var val2 = Math.pow(var2, 2);
+                              //alert(val2);
+                              var result =  Math.sqrt((val1+val2));
+                              var result = formatResult(result);
+                          //alert(result);
+
+                          document.getElementById("result").innerHTML = "<h6 class='content-title contact-title'>Pallet Diagonal is <span style='color: #007fff'>"+result+" inches</span></h6>";
+                      } else {
+                            alert('Please enter correct dimensions.');
+                          }
+                        }
+                      </script>

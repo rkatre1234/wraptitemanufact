@@ -1,0 +1,144 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+ 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get(\Magento\Store\Model\StoreManagerInterface::class);
+$mediaUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+?>
+    
+
+
+
+
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
+?>
+<?php if (!$_productCollection->count()): ?>
+    <div class="message info empty"><div><?php /* @escapeNotVerified */ echo __('We can\'t find products matching the selection.') ?></div></div>
+<?php else: ?>
+    <?php //echo $block->getToolbarHtml() ?>
+    <?php echo $block->getAdditionalHtml() ?>
+    <?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'category_page_grid';
+        $showDescription = false;
+        $showAddto = false;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+
+        echo $_aloHelper->getGridStyle('.product-items .product-item'); // Config Product Grid
+
+    } else {
+        $viewMode = 'list';
+        $image = 'category_page_list';
+        $showDescription = true;
+        $showAddto = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+    ?>
+
+    <div class="category-products clearfix products wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?> products-<?php /* @escapeNotVerified */ echo $viewMode; ?>">
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-sm-12">
+                        <p>
+                            <?php foreach ($_productCollection as $_product): ?>
+                                <a href="#<?php echo $_product->getId();?>" class="btn btn-small-font btn-trans-primary"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?></a>
+                            <?php endforeach; ?>
+                        </p>
+                </div>
+            </div>
+        </div>
+        <?php $iterator = 1; ?>
+        
+        <div class="container">
+            <div class="content-slot alternate-block">
+                <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                <?php foreach ($_productCollection as $_product): ?>
+                <div class="row" id="<?php echo $_product->getId();?>">
+                    <div class="col-lg-6">
+                        <?php
+                        $bg_image = $mediaUrl.'catalog/product'.$_product->getImage();
+                        ?>
+                        <div class="bg-stretch" style="width: 100%; height: 100%; background: url('<?php echo $bg_image; ?>'); margin-top: 30px; background-repeat: no-repeat;">
+                        <div class="ribbon" id="ribbon_<?php echo $_product->getId();?>">Key Features</div>
+                          <div class="module_<?php echo $_product->getId();?>" style="display: block;">
+                          <div class="mid_pro_text_<?php echo $_product->getId();?>" style="display: none;">
+                            <div class="link-box">
+                                       <p>
+                                       <strong>Key Features &amp; Benefits: </strong>
+                                      </p><ul style="text-align:left">
+                                          <li>Quiet Unwind for Low-Noise Operations</li>
+                                          <li>Excellent Load Holding up to 250% Stretch</li>
+                                          <li>High Clarity for Easy Product Identification</li>
+                                          <li>Easy Release with Differential Cling</li>
+                                          <li>100% Recyclable</li>
+                                      </ul>
+                                      <p></p>
+                                  </div>
+                          </div>
+                        </div>
+                        <script>
+                        require(['jquery', 'jquery/ui'], function($){
+                          $(document).ready( function() {
+                                $(".mid_pro_text_<?php echo $_product->getId();?>").hide();
+                              $("#ribbon_<?php echo $_product->getId();?>").mouseover(function(){
+                                $(".module_<?php echo $_product->getId();?>").addClass("mid_pro_text_<?php echo $_product->getId();?>");
+                                $(".module_<?php echo $_product->getId();?>").addClass("module_<?php echo $_product->getId();?>_overlay");
+                                $(".mid_pro_text_<?php echo $_product->getId();?>").show();
+                              });
+                              $("#ribbon_<?php echo $_product->getId();?>").mouseout(function(){
+                                $(".mid_pro_text_<?php echo $_product->getId();?>").hide();
+                                $(".module_<?php echo $_product->getId();?>").show();
+                                $(".module_<?php echo $_product->getId();?>").removeClass("mid_pro_text_<?php echo $_product->getId();?>");
+                                $(".module_<?php echo $_product->getId();?>").removeClass("module_<?php echo $_product->getId();?>_overlay");
+                              });
+                          });
+                        });
+                        </script>
+                    </div></div>
+                    <div class="col-lg-1 center_in_mobile" style="padding: 30px 0 0;">
+                        <div>
+                            <a target="_blank" href="/frontend/img/pdf/CMF-Traditional-Gauges.pdf" style="color:#fff"><div class="data_sheet border_in_mobile">S P E C &nbsp; S H E E T <i class="fa fa-cloud-download" aria-hidden="true"></i></div>
+                        </a></div>
+                        <div>
+                            <a target="_blank" href="/frontend/img/pdf/cast_machine_film_sales_sheet_1.8.24.pdf" style="color:#fff"><div class="sales_sheet border_in_mobile">S A L E S &nbsp; S H E E T <i class="fa fa-cloud-download" aria-hidden="true"></i></div>
+                        </a></div>
+                    </div>
+                    <div class="col col-lg-5">
+                        <div class="text-wrap" style="padding: 2rem 0 0; margin-left: 0;">
+                            <h3 style="margin-bottom: 1rem;color: #007FC2;font-size: 20px;"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getSku(), 'sku'); ?></h3>
+                            <p><strong>Description: </strong><?php echo $_product->getDescription(); ?></p>
+                            <p>
+                                <strong>Applications: </strong><?php echo $_product->getShortDescription(); ?></p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="divider-double-border"><span class="sr-only"></span></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

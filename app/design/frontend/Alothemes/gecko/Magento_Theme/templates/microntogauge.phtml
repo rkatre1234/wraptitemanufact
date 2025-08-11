@@ -1,0 +1,69 @@
+<div class="contact-container">
+                                <h6 class="content-title contact-title">Here is a calculator to help you move between the units.</h6>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <!-- contact form -->
+                                        <div action="#" method="post" id="contact_form" class="waituk_contact-form">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <select style="height: 50px;" id="var1" name="con_fname" class="form-control">
+                                                            <option>FROM *</option>
+                                                            <option value="Micron">Micron</option>
+                                                            <option value="Gauge">Gauge</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <select style="height: 50px;" id="var2" name="con_fname" class="form-control">
+                                                            <option>TO *</option>
+                                                            <option value="Micron">Micron</option>
+                                                            <option value="Gauge">Gauge</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <input type="tel" placeholder="VALUE *" id="var3" name="con_phone" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="btn-container">
+                                                        <button onclick="calculate()" class="btn btn-primary btn-arrow">CONVERT</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mt-5">
+                                        <div id="result"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        <script>
+                        function calculate() {
+                          var var1 = document.getElementById("var1").value;
+                          var var2 = document.getElementById("var2").value;
+                          var var3 = document.getElementById("var3").value;
+                          if(var1!='' && var2!='' && var3!='') {  
+                            function formatResult(result) {
+                                return result.toFixed(2);
+                            }
+                            if(var2 == 'Micron') {
+                              var result =  var3 * 0.254;
+                              var result = formatResult(result);
+                              document.getElementById("result").innerHTML = "<h6 class='content-title contact-title'>OD of the Finished Roll is <span style='color: #007fff'>"+result+" Micron</span></h6>";
+                            } else {
+                              var result =  var3 * 3.937;
+                              var result = formatResult(result);
+                              document.getElementById("result").innerHTML = "<h6 class='content-title contact-title'>Thickness of the Film is <span style='color: #007fff'>"+result+" Gauge</span></h6>";
+                            }
+                      } else {
+                            alert('Please enter correct dimensions.');
+                          }
+                        }
+                      </script>
